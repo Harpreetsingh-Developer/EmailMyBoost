@@ -1,0 +1,31 @@
+services:
+  # Backend API
+  - type: web
+    name: email-app-api
+    env: node
+    buildCommand: cd server && npm install
+    startCommand: cd server && node index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: GOOGLE_CLIENT_ID
+        value: 685807572196-66nllsrl46d1omblt1pr8541naev1t2g.apps.googleusercontent.com
+      - key: GOOGLE_REDIRECT_URI
+        value: https://email-app-api.onrender.com/auth/google/callback
+
+
+  # Frontend
+  - type: web
+    name: email-app-frontend
+    env: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: VITE_BASE_API
+        value: https://email-app-api.onrender.com
+      - key: VITE_SUPABASE_URL
+        value: https://egzqrsijkmouaeafswmm.supabase.co
+      - key: VITE_SUPABASE_ANON_KEY
+        value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVnenFyc2lqa21vdWFlYWZzd21tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY1NDk2NTgsImV4cCI6MjA3MjEyNTY1OH0.h1ssBVtjmjv9ukNUxtcwz46yQRj1XnEgpGttS8T6HS8 

@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans bg-gray-50;
+  }
+}
+
+@layer components {
+  .form-input {
+    @apply mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500;
+  }
+  
+  .btn-outline {
+    @apply inline-flex justify-center rounded-md border border-blue-500 px-4 py-2 text-sm font-medium text-blue-500 hover:bg-blue-50;
+  }
+  
+  .btn-primary {
+    @apply w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors;
+  }
+
+  .email-content {
+    @apply text-gray-800;
+  }
+
+  .email-content img,
+  .email-content .email-image,
+  .email-image {
+    @apply max-w-full h-auto rounded-lg my-4 block;
+    display: block !important;
+    margin: 16px 0 !important;
+    border-radius: 8px !important;
+    max-width: 100% !important;
+    height: auto !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .email-content p {
+    @apply mb-4;
+  }
+  
+  .email-content h1, .email-content h2, .email-content h3 {
+    @apply font-bold mb-3;
+  }
+  
+  .email-content h1 {
+    @apply text-2xl;
+  }
+  
+  .email-content h2 {
+    @apply text-xl;
+  }
+  
+  .email-content h3 {
+    @apply text-lg;
+  }
+
+  /* ContentEditable placeholder styling */
+  [contenteditable]:empty:before {
+    content: attr(data-placeholder);
+    color: #9CA3AF;
+    font-style: italic;
+    white-space: pre-line;
+    cursor: text;
+  }
+
+  [contenteditable]:focus:before {
+    content: none;
+  }
+
+  /* Ensure images render properly in all contexts */
+  .prose img,
+  .prose .email-image {
+    @apply max-w-full h-auto rounded-lg my-4 block;
+    display: block !important;
+    margin: 16px 0 !important;
+    border-radius: 8px !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+}
