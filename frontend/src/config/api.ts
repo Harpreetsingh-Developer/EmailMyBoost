@@ -1,7 +1,8 @@
 // API configuration for different environments
-const API_BASE_URL = import.meta.env.PROD 
-  ? import.meta.env.VITE_BASE_API || 'https://emailmyboost.onrender.com'
-  : 'http://localhost:3000';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 
+  (import.meta.env.PROD 
+    ? 'https://emailmyboost.onrender.com/api'
+    : 'http://localhost:5000/api');
 
 export const API_ENDPOINTS = {
   // Email endpoints

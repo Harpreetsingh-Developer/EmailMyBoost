@@ -41,10 +41,17 @@ const app = express();
 // Dynamic CORS configuration for development and production
 const allowedOrigins = [
   "http://localhost:5173", // Vite dev server
-  "http://localhost:3000", // Local testing
+  "http://localhost:3000", // Frontend URL
+  "http://localhost:5000", // Backend URL
   "https://app.emailmyboost.com", // Production frontend
   "https://emailmyboost.com", // Production domain (without subdomain)
 ];
+
+// Get frontend URL from environment variable if available
+const frontendUrl = process.env.FRONTEND_URL;
+if (frontendUrl && !allowedOrigins.includes(frontendUrl)) {
+  allowedOrigins.push(frontendUrl);
+}
 
 // Middleware
 app.use(
