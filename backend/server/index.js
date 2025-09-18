@@ -25,12 +25,16 @@ console.log(`📁 Loading config from: ${envFile}`);
 
 // Initialize Supabase (for JWT verification)
 const supabaseUrl =
-  process.env.VITE_SUPABASE_URL || "https://gtmndgwkahpkkcgsgext.supabase.co";
+  process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || "https://gtmndgwkahpkkcgsgext.supabase.co";
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const supabase = createClient(
   supabaseUrl,
-  supabaseServiceKey || process.env.VITE_SUPABASE_ANON_KEY
+  supabaseServiceKey || process.env.SUPABASE_KEY || process.env.VITE_SUPABASE_ANON_KEY
 );
+
+console.log("🔧 Supabase Configuration:");
+console.log(`  URL: ${supabaseUrl}`);
+console.log(`  Using key: ${supabaseServiceKey ? 'Service Role Key' : (process.env.SUPABASE_KEY ? 'Backend Key' : 'Anon Key')}`);
 
 console.log("🔧 Gmail API Configuration:");
 console.log("  Using Supabase OAuth with Google provider");
